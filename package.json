@@ -1,25 +1,60 @@
 {
-  "name": "@etclabscore/pristine-typescript",
-  "version": "0.0.0-development",
+  "name": "@etclabscore/signatory-core",
+  "version": "1.0.0",
   "description": "",
   "main": "build/index.js",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "build": "tsc && typedoc --out docs &&  touch docs/.nojekyll ",
+    "build": "npm run build:typing && npm run build:code",
+    "build:code": "tsc",
     "lint": "tslint --fix -p .",
-    "test": "npm run lint && jest --coverage"
+    "build:typings": "open-rpc-typings --output-ts src/generated-types",
+    "test:web": "npm run build:code && webpack && rm -rf dist",
+    "test": "npm run lint && test:web && jest --coverage"
   },
   "author": "",
   "license": "Apache-2.0",
+  "dependencies": {
+    "@etclabscore/eserialize": "^1.0.2",
+    "@etclabscore/ethereumjs-wallet": "^1.0.4",
+    "@open-rpc/typings": "^1.8.0",
+    "bip39": "^3.0.2",
+    "eth-sig-util": "^2.5.2",
+    "ethereumjs-common": "^1.5.0",
+    "ethereumjs-tx": "^2.1.1",
+    "ethereumjs-util": "^6.2.0",
+    "lodash": "^4.17.15",
+    "randombytes": "^2.1.0",
+    "rlp": "^2.2.4",
+    "save": "^2.4.0",
+    "uuid": "^3.3.3"
+  },
   "devDependencies": {
+    "@open-rpc/semantic-release-plugin": "^1.0.2",
+    "fs-extra": "^8.1.0",
+    "@semantic-release/exec": "^5.0.0",
+    "@types/bip39": "^3.0.0",
+    "@types/cors": "^2.8.6",
+    "@types/ethereumjs-tx": "^2.0.0",
+    "@types/ethereumjs-util": "^6.1.0",
+    "@types/fs-extra": "^8.0.1",
+    "@types/hdkey": "^0.7.1",
     "@types/jest": "^24.0.13",
-    "@types/node": "^12.12.17",
+    "@types/json-schema": "^7.0.4",
+    "@types/lodash": "^4.14.149",
+    "@types/node": "^12.6.8",
+    "@types/randombytes": "^2.0.0",
+    "@types/rimraf": "^2.0.3",
+    "@types/uuid": "^3.4.6",
+    "@types/ws": "^6.0.4",
     "jest": "^24.8.0",
     "ts-jest": "^24.1.0",
     "tslint": "^5.17.0",
-    "typedoc": "^0.15.5",
-    "typescript": "^3.7.3"
+    "rimraf": "^3.0.0",
+    "typescript": "^3.5.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
   }
 }
