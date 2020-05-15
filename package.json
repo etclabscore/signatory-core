@@ -12,7 +12,7 @@
     "lint": "tslint --fix -p .",
     "build:typings": "open-rpc-typings --output-ts src/generated-types",
     "test:web": "npm run build:code && webpack && rm -rf dist",
-    "test": "npm run lint && test:web && jest --coverage"
+    "test": "npm run lint && npm run test:web && jest --coverage"
   },
   "author": "",
   "license": "Apache-2.0",
