@@ -11,7 +11,6 @@
     "@semantic-release/npm"
   ],
   "verifyConditions": [
-    [ "@semantic-release/exec", { "verifyCmd": "./verifyConditions.sh", "env": {} } ],
     "@semantic-release/changelog",
     "@open-rpc/semantic-release-plugin",
     "@semantic-release/npm",
@@ -23,7 +22,6 @@
     "@open-rpc/semantic-release-plugin"
   ],
   "publish": [
-    [ "@semantic-release/exec", { "publishCmd": "./publish.sh" } ],
     "@semantic-release/github",
     "@semantic-release/npm"
   ],
