@@ -1,13 +1,13 @@
 {
   "name": "@etclabscore/signatory-core",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "",
-  "main": "build/index.js",
+  "main": "build/src/index.js",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "build": "npm run build:typing && npm run build:code",
+    "build": "npm run build:typings && npm run build:code",
     "build:code": "tsc",
     "lint": "tslint --fix -p .",
     "build:typings": "open-rpc-typings --output-ts src/generated-types",
