@@ -44,12 +44,21 @@ describe("Signing transactions", () => {
     };
   });
 
-  it("it should sign and recover a transaction", () => {
+  it("it should sign and recover a message", () => {
     const privateKey = Buffer.alloc(32, 1);
     const expectedPublicKey = util.privateToPublic(privateKey);
     const message = Buffer.from("ok");
     const signed = sign.personalSign(message, privateKey, 61);
     const publicKey = sign.recoverPublicKeyFromSig(message, signed, 61);
+    expect(publicKey).toEqual(expectedPublicKey);
+  });
+
+  it("it should sign and recover a message from 1337 chainid", () => {
+    const privateKey = Buffer.alloc(32, 1);
+    const expectedPublicKey = util.privateToPublic(privateKey);
+    const message = Buffer.from("ok");
+    const signed = sign.personalSign(message, privateKey, 1337);
+    const publicKey = sign.recoverPublicKeyFromSig(message, signed, 1337);
     expect(publicKey).toEqual(expectedPublicKey);
   });
 
